@@ -7,22 +7,24 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import Header from './src/Header'
 // 버튼 이미지 쓰려면 이렇게 해야함
 // 함수형이 난 더 편한뎅 힝...
 class App extends Component {
+
+  state = {
+    appName: 'My First App'
+  }
+
   render() {
     return (
       <View style={styles.mainView}>
-        <View style={styles.subView}>
-          <Text>hello world!</Text>
-        </View>
-        <View style={styles.subView}>
-          <Text>hello world!</Text>
-        </View>
-        <View style={styles.subView}>
-          <Text>hello world!</Text>
-        </View>
+        {/* <Header name={this.state.appName}/> */}
+        <Text
+          style={styles.mainText}
+          onPress={() => alert('헬로월드!')}
+        >Hello World</Text>
       </View>
     );
   }
@@ -30,7 +32,7 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   mainView: {
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     flex:1,
     // 뷰가 하나여서 전체를 차지 다른요소 있으면 1/4, 3/4 이런식으로 나눠질것 flex!
     paddingTop: 50,
@@ -38,6 +40,24 @@ const styles = StyleSheet.create({
     // 패딩은 뷰안에 있는 다른 컴포넌트와의 간격 띄우려고
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  subView: {
+    backgroundColor: 'yellow',
+    marginBottom: 10,
+  },
+  anotherSubView: {
+    flex: 2,
+    backgroundColor: 'yellow',
+    marginBottom: 10,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  mainText: {
+    fontSize: 20,
+    fontWeight: 'normal',
+    color: 'red',
+    padding: 20
   }
 })
 

@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import Generator from './src/Generator';
 import Header from './src/Header'
+import NumList from './src/NumList';
 // 버튼 이미지 쓰려면 이렇게 해야함
 // 함수형이 난 더 편한뎅 힝...
 class App extends Component {
@@ -36,6 +37,8 @@ class App extends Component {
         </View>
 
         <Generator add={this.onAddRandomNumber}/>
+
+        <NumList num={this.state.random}/>
       </View>
     );
   }

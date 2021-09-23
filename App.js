@@ -21,7 +21,21 @@ class App extends Component {
   }
 
   onAddRandomNumber = () => {
-    alert('랜덤숫자가 추가되었습니다.')
+    const randomNum = Math.floor(Math.random()*100)+1
+    this.setState(prevState => {
+      return {
+        random: [...prevState.random, randomNum]
+      }
+    })
+  }
+
+  onDeleteNumber = (position) => {
+    const newArray = this.state.random.filter((num, i) => {
+      return position !== i
+    })
+    this.setState({
+      random: newArray
+    })
   }
 
   render() {
@@ -38,7 +52,10 @@ class App extends Component {
 
         <Generator add={this.onAddRandomNumber}/>
 
-        <NumList num={this.state.random}/>
+        <NumList 
+        num={this.state.random}
+        delete={this.onDeleteNumber}
+        />
       </View>
     );
   }
@@ -53,7 +70,7 @@ const styles = StyleSheet.create({
     // 마진은 뷰와 다른 컴포넌트와의 간격을 띄우려고
     // 패딩은 뷰안에 있는 다른 컴포넌트와의 간격 띄우려고
     alignItems: 'center',
-    justifyContent: 'center'
+    // justifyContent: 'center'
   },
   subView: {
     backgroundColor: 'yellow',

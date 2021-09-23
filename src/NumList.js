@@ -7,15 +7,18 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-// 이런식으로도 쓰네?? 이렇게 쓰면 jsx 컴포넌트 리턴 근데 함수형도 return붙이면 가능하지않나..?
 const NumList = (props) => {
     return (
         props.num.map((el, i) => (
-            <View style={styles.numList} key={i}>
+            <TouchableOpacity 
+                style={styles.numList} 
+                key={i}
+                onPress={() => props.delete(i)}
+            >
                 <Text>{el}</Text>
-            </View>
+            </TouchableOpacity>
         ))
     )
  }

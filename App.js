@@ -8,23 +8,34 @@
 
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
+import Generator from './src/Generator';
 import Header from './src/Header'
 // 버튼 이미지 쓰려면 이렇게 해야함
 // 함수형이 난 더 편한뎅 힝...
 class App extends Component {
 
   state = {
-    appName: 'My First App'
+    appName: 'My First App',
+    random: [36, 999]
+  }
+
+  onAddRandomNumber = () => {
+    alert('랜덤숫자가 추가되었습니다.')
   }
 
   render() {
     return (
       <View style={styles.mainView}>
-        {/* <Header name={this.state.appName}/> */}
+        <Header name={this.state.appName}/>
+
+        <View>
         <Text
           style={styles.mainText}
           onPress={() => alert('헬로월드!')}
         >Hello World</Text>
+        </View>
+
+        <Generator add={this.onAddRandomNumber}/>
       </View>
     );
   }

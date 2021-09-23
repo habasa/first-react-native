@@ -16,7 +16,7 @@ const Header = (props) => (
         // onPress={() => alert('hello world')}
         // onLongPress={() => alert('you find easterEgg!')}
         // onPressIn={() => alert('onpress in')}
-        onPressOut={() => alert('onpress out')}
+        onPressOut={() => alert('header component')}
     >
         <View>
             <Text>{props.name}</Text>

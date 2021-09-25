@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Generator from './src/Generator';
 import Header from './src/Header'
+import Input from './src/Input';
 import NumList from './src/NumList';
 // 버튼 이미지 쓰려면 이렇게 해야함
 // 함수형이 난 더 편한뎅 힝...
@@ -41,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <Header name={this.state.appName} />
+        {/* <Header name={this.state.appName} />
 
         <View>
           <Text
@@ -63,7 +64,9 @@ class App extends Component {
             num={this.state.random}
             delete={this.onDeleteNumber}
           />
-        </ScrollView>
+        </ScrollView> */}
+
+        <Input/>
       </View>
     );
   }

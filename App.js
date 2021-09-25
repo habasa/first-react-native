@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Generator from './src/Generator';
 import Header from './src/Header'
 import NumList from './src/NumList';
@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   onAddRandomNumber = () => {
-    const randomNum = Math.floor(Math.random()*100)+1
+    const randomNum = Math.floor(Math.random() * 100) + 1
     this.setState(prevState => {
       return {
         random: [...prevState.random, randomNum]
@@ -41,21 +41,29 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <Header name={this.state.appName}/>
+        <Header name={this.state.appName} />
 
         <View>
-        <Text
-          style={styles.mainText}
-          onPress={() => alert('헬로월드!')}
-        >Hello World</Text>
+          <Text
+            style={styles.mainText}
+            onPress={() => alert('헬로월드!')}
+          >Hello World</Text>
         </View>
 
-        <Generator add={this.onAddRandomNumber}/>
-
-        <NumList 
-        num={this.state.random}
-        delete={this.onDeleteNumber}
-        />
+        <ScrollView 
+          style={{ width: '100%' }}
+          // onMomentumScrollBegin={()=>alert('begin')}
+          // onMomentumScrollEnd={()=>alert('end')}
+          // onScroll={()=>alert('Scrolling')}
+          // onContentSizeChange={(width, height) => alert(height)}
+          bounces={true}
+        >
+          <Generator add={this.onAddRandomNumber} />
+          <NumList
+            num={this.state.random}
+            delete={this.onDeleteNumber}
+          />
+        </ScrollView>
       </View>
     );
   }
@@ -64,7 +72,7 @@ class App extends Component {
 const styles = StyleSheet.create({
   mainView: {
     backgroundColor: 'white',
-    flex:1,
+    flex: 1,
     // 뷰가 하나여서 전체를 차지 다른요소 있으면 1/4, 3/4 이런식으로 나눠질것 flex!
     paddingTop: 50,
     // 마진은 뷰와 다른 컴포넌트와의 간격을 띄우려고
